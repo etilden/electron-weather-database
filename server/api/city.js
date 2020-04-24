@@ -1,5 +1,5 @@
-const router = require("express");
-const City = require("../db/models");
+const router = require("express").Router();
+const { City } = require("../db/models");
 
 router.get('/:cityId', async (req, res, next) => {
   try {

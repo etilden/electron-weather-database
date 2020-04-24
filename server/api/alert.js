@@ -1,9 +1,9 @@
-const router = require("express")
-const Alert = require("../db/models")
+const router = require("express").Router();
+const { WeatherAlert } = require("../db/models")
 
 router.get("/user/:userId", async (req, res, next) => {
   try {
-    const userAlerts = await Alert.findAll({
+    const userAlerts = await WeatherAlert.findAll({
       where: {
         userId: req.params.userId
       }
@@ -16,7 +16,7 @@ router.get("/user/:userId", async (req, res, next) => {
 
 router.post("/user/:userId", async (req, res, next) => {
   try {
-    const newAlert = await Alert.create(req.body)
+    const newAlert = await WeatherAlert.create(req.body)
     res.json(newAlert)
   } catch(err) {
     next(err)
@@ -25,7 +25,7 @@ router.post("/user/:userId", async (req, res, next) => {
 
 router.delete("/user/:userId/:alertId", async (req, res, next) => {
   try {
-    const deleted = Alert.destroy({
+    const deleted = WeatherAlert.destroy({
       where: {
         id: req.params.alertId
       }

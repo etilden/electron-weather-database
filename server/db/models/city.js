@@ -1,17 +1,18 @@
 const Sequelize = require('sequelize');
-const db = require('../db');
+const db = require('../database');
 
 const City = db.define('city', {
   id: {
     type: Sequelize.INTEGER,
     allowNull: false,
+    primaryKey: true
   },
   name: {
     type: Sequelize.STRING,
     allowNull: false,
   },
   state: {
-    type: Sequelize.INTEGER
+    type: Sequelize.STRING
   },
   country: {
     type: Sequelize.STRING,
