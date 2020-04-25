@@ -1,8 +1,10 @@
 const db = require('../server/db');
-const citySeed = require("./city.list.json")
+const cities = require("./city.list.json")
 // const citySeed = require("./city.test.json");
 
 const {City, User, WeatherAlert} = require("../server/db/models");
+
+const citySeed = cities.filter(city => city.state ? city : null)
 
 const userSeed = [
   {
@@ -41,10 +43,11 @@ const seed = async () => {
   const users = await User.bulkCreate(userSeed);
   const cities = await City.bulkCreate(citySeed);
   const alerts = await WeatherAlert.bulkCreate(alertSeed);
+  console.log(cities[0])
 
-  console.log(`${cities.length} activities created`);
+  console.log(`${cities.length} cities created`);
   console.log(`${users.length} users created`);
-  console.log(`${alerts.length} companies created`);
+  console.log(`${alerts.length} alerts created`);
 };
 
 const runSeed = async () => {

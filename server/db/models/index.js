@@ -5,7 +5,8 @@ const City = require('./city')
 WeatherAlert.belongsTo(User);
 User.hasMany(WeatherAlert); 
 
-User.hasOne(City);
+City.hasMany(User);
+User.belongsTo(City)
 
 module.exports = {
   User, 
