@@ -1,6 +1,6 @@
 const db = require('../server/db');
-const cities = require("./city.list.json")
-// const citySeed = require("./city.test.json");
+// const cities = require("./city.list.json")
+const cities = require("./cities.list.json");
 
 const {City, User, WeatherAlert} = require("../server/db/models");
 
@@ -13,14 +13,14 @@ const userSeed = [
     userName: "emma", 
     email: "e.k.tilden@gmail.com", 
     password: "12345678",
-    locationId: 833
+    cityId: 833
   }, {
     firstName: "Lemma", 
     lastName: "Lilden", 
     userName: "lemma", 
     email: "l.l.lilden@lmail.lom", 
     password: "12345678",
-    locationId: 833
+    cityId: 833
   }
 ]
 
@@ -28,12 +28,14 @@ const alertSeed = [
   {
     userId: 1, 
     alertTime: '13:00',
-    alertDays: ['Weekends']
+    alertDays: ['Weekends'],
+    targetTime: '15:00'
   },
   {
     userId: 1, 
     alertTime: '14:00',
-    alertDays: ['Weekends']
+    alertDays: ['Weekends'],
+    targetTime: '17:00'
   }
 ]
 

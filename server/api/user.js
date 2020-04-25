@@ -1,7 +1,8 @@
 const router = require("express").Router(); 
-const { User } = require('../db/models'); 
+const { User, WeatherAlert } = require('../db/models'); 
 
 router.get("/:userId", async (req, res, next) => {
+  console.log(typeof(new WeatherAlert()))
   try {
     const user = await User.findByPk(req.params.userId);
     res.json(user)

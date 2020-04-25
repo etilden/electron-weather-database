@@ -47,9 +47,9 @@ const User = db.define(
       return () => this.getDataValue('salt')
       }
     },
-    locationId: {
-      type: Sequelize.INTEGER
-    }
+    // locationId: {
+    //   type: Sequelize.INTEGER
+    // }
   }
 )
 
