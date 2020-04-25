@@ -6,10 +6,7 @@ router.get("/user/:userId", async (req, res, next) => {
     const userAlerts = await WeatherAlert.findAll({
       where: {
         userId: req.params.userId
-      },
-      include: [{
-        model: User
-      }]
+      }
     })
     res.json(userAlerts)
   } catch(err) {

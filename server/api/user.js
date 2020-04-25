@@ -3,7 +3,14 @@ const { User, WeatherAlert } = require('../db/models');
 
 router.get("/:userId", async (req, res, next) => {
   try {
-    const user = await User.findByPk(req.params.userId);
+    const user = await User.findAll({
+      where: {
+        id: req.params.userId
+      },
+      include: {
+        model: WeatherAlert
+      }
+    });
     res.json(user)
   } catch(err) {
     next(err)
