@@ -53,8 +53,6 @@ const User = db.define(
   }
 )
 
-module.exports = User
-
 User.prototype.correctPassword = function(candidatePwd) {
   return User.encryptPassword(candidatePwd, this.salt()) === this.password()
 }
@@ -84,3 +82,4 @@ User.beforeBulkCreate(users => {
   users.forEach(setSaltAndPassword)
 })
 
+module.exports = User

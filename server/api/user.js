@@ -1,6 +1,28 @@
 const router = require("express").Router(); 
 const { User, WeatherAlert } = require('../db/models'); 
 
+router.get('/', async (req, res, next) => {
+  try {
+    const user = await User.findAll({
+      where: {
+        userName: req.body.userName
+      }
+    })
+    console.log('()()()()())', user)
+    if (!user) {
+      console.log('No such user found:', req.body.email)
+      res.status(401).send('Wrong username and/or password')
+    } else if (!user.correctPassword(req.body.password)) {
+      console.log('Incorrect password for user:', req.body.email)
+      res.status(401).send('Wrong username and/or password')
+    } else {
+      res.json(user)
+    }
+  } catch(err) {
+    next(err)
+  }
+})
+
 router.get("/:userId", async (req, res, next) => {
   try {
     const user = await User.findAll({
