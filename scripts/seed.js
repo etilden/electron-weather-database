@@ -13,14 +13,14 @@ const userSeed = [
     userName: "emma", 
     email: "e.k.tilden@gmail.com", 
     password: "12345678",
-    cityId: 833
+    cityId: 4046319
   }, {
     firstName: "Lemma", 
     lastName: "Lilden", 
     userName: "lemma", 
     email: "l.l.lilden@lmail.lom", 
     password: "12345678",
-    cityId: 833
+    cityId: 4046319
   }
 ]
 
@@ -42,10 +42,9 @@ const alertSeed = [
 
 const seed = async () => {
   await db.sync({ force: true });
-  const users = await User.bulkCreate(userSeed);
   const cities = await City.bulkCreate(citySeed);
+  const users = await User.bulkCreate(userSeed);
   const alerts = await WeatherAlert.bulkCreate(alertSeed);
-  console.log(cities[0])
 
   console.log(`${cities.length} cities created`);
   console.log(`${users.length} users created`);
