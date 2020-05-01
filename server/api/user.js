@@ -8,7 +8,6 @@ router.get('/', async (req, res, next) => {
         userName: req.body.userName
       }
     })
-    console.log(user)
     if (!user.length) {
       console.log('No such user found:', req.body.email)
       res.status(401).send('Wrong username and/or password')
