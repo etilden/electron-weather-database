@@ -1,7 +1,8 @@
 const router = require("express").Router(); 
 const { User, WeatherAlert } = require('../db/models'); 
 
-router.get('/', async (req, res, next) => {
+router.post('/', async (req, res, next) => {
+  console.log('in route')
   try {
     const user = await User.findAll({
       where: {
